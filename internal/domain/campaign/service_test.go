@@ -24,11 +24,15 @@ var (
 		Content: "Body",
 		Emails:  []string{"teste1@test.com"},
 	}
-	service = Service{}
+	repository = new(repositoryMock)
+	service    = Service{Repository: repository}
 )
 
 func Test_Create_Campaign(t *testing.T) {
 	assert := assert.New(t)
+	repositoryMock := new(repositoryMock)
+	repositoryMock.On("Save", mock.Anything).Return(nil)
+	service.Repository = repositoryMock
 
 	id, err := service.Create(newCampaign)
 
