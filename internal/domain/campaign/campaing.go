@@ -19,8 +19,7 @@ type Campaign struct {
 	Contacts  []Contact
 }
 
-func NewCampaing(name string, content string, emails []string) (*Campaign, error) {
-	contacts := make([]Contact, len(emails))
+func NewCampaign(name string, content string, emails []string) (*Campaign, error) {
 
 	if name == "" {
 		return nil, errors.New("name is required")
@@ -30,6 +29,7 @@ func NewCampaing(name string, content string, emails []string) (*Campaign, error
 		return nil, errors.New("contacts is required")
 	}
 
+	contacts := make([]Contact, len(emails))
 	for index, email := range emails {
 		contacts[index].Email = email
 	}
