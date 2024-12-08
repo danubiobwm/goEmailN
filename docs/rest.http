@@ -6,4 +6,6 @@ POST http://localhost:3000/campaigns
 	"emails": ["campaign@test.com"]
 }
 
+################################
+GET http://localhost:3000/campaigns
 
