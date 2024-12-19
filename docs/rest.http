@@ -7,5 +7,5 @@ POST http://localhost:3000/campaigns
 }
 
 ################################
-GET http://localhost:3000/campaigns
+GET http://localhost:3000/campaigns/cthp6kjsc480g33h0b80
 
