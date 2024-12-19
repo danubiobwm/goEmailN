@@ -26,3 +26,19 @@ func (s *ServiceImp) Create(newCampaign contract.NewCampaign) (string, error) {
 
 	return campaign.ID, nil
 }
+
+func (s *ServiceImp) GetBy(id string) (*contract.CampaignResponse, error) {
+	campaign, err := s.Repository.GetById(id)
+
+	if err != nil {
+		return nil, internalerrors.ErrInternal
+	}
+
+	return &contract.CampaignResponse{
+		ID:      campaign.ID,
+		Name:    campaign.Name,
+		Content: campaign.Content,
+		Status:  campaign.Status,
+	}, nil
+
+}
