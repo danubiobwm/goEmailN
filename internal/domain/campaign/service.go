@@ -1,6 +1,8 @@
 package campaign
 
 import (
+	"errors"
+
 	"github.com/danubiobwm/goEmailN/internal/contract"
 	internalerrors "github.com/danubiobwm/goEmailN/internal/internalErrors"
 )
@@ -8,6 +10,7 @@ import (
 type Service interface {
 	Create(newCampaign contract.NewCampaign) (string, error)
 	GetBy(id string) (*contract.CampaignResponse, error)
+	Cancel(id string) error
 }
 
 type ServiceImp struct {
@@ -42,4 +45,24 @@ func (s *ServiceImp) GetBy(id string) (*contract.CampaignResponse, error) {
 		Content: campaign.Content,
 		Status:  campaign.Status,
 	}, nil
+}
+func (s *ServiceImp) Cancel(id string) error {
+
+	campaign, err := s.Repository.GetBy(id)
+
+	if err != nil {
+		return internalerrors.ErrInternal
+	}
+
+	if campaign.Status != Pending {
+		return errors.New("campaign status invalid")
+	}
+
+	campaign.Cancel()
+	err = s.Repository.Save(campaign)
+
+	if err != nil {
+		return internalerrors.ErrInternal
+	}
+	return nil
 }
