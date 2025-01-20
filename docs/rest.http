@@ -15,4 +15,4 @@ PATCH  http://localhost:3000/campaigns/cancel/cu5dlnjsc485g97kd2gg
 
 ################################
 
-DELETE   http://localhost:3000/campaigns/delete/cu5vrjrsc483qr3sjq90
+DELETE   http://localhost:3000/campaigns/delete/cu7cl7jsc485ip0tcr90
