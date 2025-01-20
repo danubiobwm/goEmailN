@@ -10,6 +10,7 @@ import (
 const (
 	Pending  string = "Pending"
 	Canceled        = "Canceled"
+	Deleted         = "Deleted"
 	Started         = "Started"
 	Done            = "Done"
 )
@@ -31,6 +32,9 @@ type Campaign struct {
 
 func (c *Campaign) Cancel() {
 	c.Status = Canceled
+}
+func (c *Campaign) Delete() {
+	c.Status = Deleted
 }
 
 func NewCampaign(name string, content string, emails []string) (*Campaign, error) {

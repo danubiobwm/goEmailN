@@ -1,15 +1,18 @@
 POST http://localhost:3000/campaigns
 
 {
-  "Name": "campaign2",
-	"Content": "Campaig2 test",
-	"emails": ["campaign2@test.com"]
+  "Name": "campaign4",
+	"Content": "Campaig4 test",
+	"emails": ["campaign@test.com", "campaign2@test.com", "campaign3@test.com"]
 }
 
 ################################
-GET http://localhost:3000/campaigns/cu5dphjsc483r37gchmg
+GET http://localhost:3000/campaigns/cu611mrsc486e1036ar0
 
 ################################
 
 PATCH  http://localhost:3000/campaigns/cancel/cu5dlnjsc485g97kd2gg
 
+################################
+
+DELETE   http://localhost:3000/campaigns/delete/cu5vrjrsc483qr3sjq90
