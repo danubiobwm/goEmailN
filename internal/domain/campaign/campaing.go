@@ -8,11 +8,10 @@ import (
 )
 
 const (
-	Pending  string = "Pending"
-	Canceled        = "Canceled"
-	Deleted         = "Deleted"
-	Started         = "Started"
-	Done            = "Done"
+	Pending string = "Pending"
+	Deleted        = "Deleted"
+	Started        = "Started"
+	Done           = "Done"
 )
 
 type Contact struct {
@@ -30,9 +29,6 @@ type Campaign struct {
 	Status    string    `gorm:"size:20"`
 }
 
-func (c *Campaign) Cancel() {
-	c.Status = Canceled
-}
 func (c *Campaign) Delete() {
 	c.Status = Deleted
 }

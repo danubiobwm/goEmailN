@@ -10,7 +10,7 @@ import (
 type Service interface {
 	Create(newCampaign contract.NewCampaign) (string, error)
 	GetBy(id string) (*contract.CampaignResponse, error)
-	Cancel(id string) error
+	//Cancel(id string) error
 	Delete(id string) error
 }
 
@@ -37,12 +37,12 @@ func (s *ServiceImp) GetBy(id string) (*contract.CampaignResponse, error) {
 	campaign, err := s.Repository.GetBy(id)
 
 	if err != nil {
-		return nil, internalerrors.ErrInternal
+		return nil, internalerrors.ProcessErrorToReturn(err)
 	}
 
-	if campaign == nil {
-		return nil, nil
-	}
+	// if campaign == nil {
+	// 	return nil, nil
+	// }
 
 	return &contract.CampaignResponse{
 		ID:                   campaign.ID,
@@ -52,37 +52,38 @@ func (s *ServiceImp) GetBy(id string) (*contract.CampaignResponse, error) {
 		AmountOfEmailsToSend: len(campaign.Contacts),
 	}, nil
 }
-func (s *ServiceImp) Cancel(id string) error {
 
-	campaign, err := s.Repository.GetBy(id)
+// func (s *ServiceImp) Cancel(id string) error {
 
-	if err != nil {
-		return internalerrors.ErrInternal
-	}
+// 	campaign, err := s.Repository.GetBy(id)
 
-	if campaign.Status != Pending {
-		return errors.New("campaign status invalid")
-	}
+// 	if err != nil {
+// 		return internalerrors.ProcessErrorToReturn(err)
+// 	}
 
-	campaign.Cancel()
-	err = s.Repository.Update(campaign)
+// 	if campaign.Status != Pending {
+// 		return errors.New("campaign status invalid")
+// 	}
 
-	if err != nil {
-		return internalerrors.ErrInternal
-	}
-	return nil
-}
+// 	campaign.Cancel()
+// 	err = s.Repository.Update(campaign)
+
+// 	if err != nil {
+// 		return internalerrors.ErrInternal
+// 	}
+// 	return nil
+// }
 
 func (s *ServiceImp) Delete(id string) error {
 
 	campaign, err := s.Repository.GetBy(id)
 
 	if err != nil {
-		return internalerrors.ErrInternal
+		return internalerrors.ProcessErrorToReturn(err)
 	}
 
 	if campaign.Status != Pending {
-		return errors.New("campaign status invalid")
+		return errors.New("Campaign status invalid")
 	}
 
 	campaign.Delete()

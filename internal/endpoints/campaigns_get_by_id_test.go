@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/danubiobwm/goEmailN/internal/contract"
-	internalmock "github.com/danubiobwm/goEmailN/internal/test/mock"
+	internalmock "github.com/danubiobwm/goEmailN/internal/test/internal-mock"
 	"github.com/go-chi/chi"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
