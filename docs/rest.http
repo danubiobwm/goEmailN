@@ -1,4 +1,5 @@
 POST http://localhost:3000/campaigns
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI3MkRZZXI5YXNxaHdOQ05rWFRZOUpkTDkzbDA4dzJ4SGxWVmJmX2U4bTNvIn0.eyJleHAiOjE3Mzg0MTE2ODMsImlhdCI6MTczODQxMTM4MywianRpIjoiY2YzYzYwYjAtNGRmOS00OTFiLWI5M2QtMTViZGY2OGQyNWI4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9wcm92aWRlciIsImF1ZCI6ImVtYWlsbiIsInN1YiI6IjQ5ZDM3ODkwLTc4YTctNDY3OC05YjQyLWYwN2ZjZGM3NjRmNSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImVtYWlsbiIsInNlc3Npb25fc3RhdGUiOiJhOGQ5ZmY2Yy03N2MyLTQ2NDgtOGZmZC1lMTE5OTk5ZGZlNTgiLCJzY29wZSI6IiIsInNpZCI6ImE4ZDlmZjZjLTc3YzItNDY0OC04ZmZkLWUxMTk5OTlkZmU1OCJ9.IS0yLGlXLzetO79ee_AjwMIriwNh2_oRdDeU6qnEXovvWYPHd0zc5LB_Yq5cgiVSkiZHEIP5BPJ4MAsziyaoHG5H03R4rFnWR_7v6CPNSvopXQI1h8Fm3GjHmGl-GoEaYy_rmZxtZje8G2s9hOvxuyWINgTstKTPAk-oHsNuBi-AfUm3yWc7YqwzNaJyKnzIpjCwfyHjjsVlUp3Gw24BJ60hLTKdT4RWLAzATQbOYQbN09Dw5khtzca3AZAMgb9cLF3TL-qimUrtcH-JHOlLIwQ4oLQ_YmOrWYANHIz3trYfH3nhldNNiqQiZf3dw9Lc60obRmr3Fh06t18oFodhSA
 
 {
   "Name": "campaign4",
@@ -16,3 +17,22 @@ GET http://localhost:3000/campaigns/cu611mrsc486e1036ar0
 ################################
 
 DELETE   http://localhost:3000/campaigns/delete/cu7cl7jsc485ip0tcr90
+
+################################
+
+POST   http://localhost:8080/realms/provider/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=emailn&username=danubio&password=admin&grant_type=password
+#client_id=emailn&client_secret=m7kDKDGLv4TSTBImFxiDvbO7VPy2CTXY&grant_type=client_credentials
+# client_id=emailn&client_secret={SECRET}&grant_type=client_credentials
+
+################################
+
+POST   http://localhost:8080/realms/provider/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=emailn_users&username=danubio&password=admin&grant_type=password
+# client_id=emailn&client_secret={SECRET}&grant_type=client_credentials
+
+################################
