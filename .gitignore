@@ -1,0 +1,27 @@
+# Arquivos e diretórios específicos do Go
+*.exe
+*.test
+_obj
+_test
+vendor/
+bin/
+
+# Arquivos e diretórios de IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Arquivos de sistema
+*.swp
+*~
+Thumbs.db
+
+# Arquivos de log
+*.log
+
+# Arquivos de configuração
+.env
+
+# Outros arquivos e diretórios que você pode querer ignorar
+# data/
+# tmp/
