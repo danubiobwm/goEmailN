@@ -1,6 +1,8 @@
 package main
 
 import (
+	"github.com/joho/godotenv"
+	"log"
 	"net/http"
 
 	"github.com/danubiobwm/goEmailN/internal/domain/campaign"
@@ -10,6 +12,10 @@ import (
 )
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 	r := chi.NewRouter()
 
 	db := database.NewDb()
