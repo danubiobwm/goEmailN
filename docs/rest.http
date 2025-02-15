@@ -2,7 +2,7 @@
 @provider = http://localhost:8080
 
 ################################
-POST http://localhost:3000/campaigns
+POST {{url}}/campaigns
 Authorization: Bearer {{access_token}}
 
 {
