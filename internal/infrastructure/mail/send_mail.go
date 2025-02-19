@@ -1,10 +1,11 @@
-package main
+package mail
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/danubiobwm/goEmailN/internal/domain/campaign"
 	"gopkg.in/gomail.v2"
-	"os"
 )
 
 func SendMail(campaign *campaign.Campaign) error {

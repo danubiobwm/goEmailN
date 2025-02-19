@@ -14,6 +14,11 @@ func (c *CampaignRepository) Create(campaign *campaign.Campaign) error {
 	return tx.Error
 }
 
+func (c *CampaignRepository) Update(campaign *campaign.Campaign) error {
+	tx := c.Db.Save(campaign)
+	return tx.Error
+}
+
 func (c *CampaignRepository) Get() ([]campaign.Campaign, error) {
 	var campaigns []campaign.Campaign
 	tx := c.Db.Find(&campaigns)
@@ -22,11 +27,12 @@ func (c *CampaignRepository) Get() ([]campaign.Campaign, error) {
 
 func (c *CampaignRepository) GetBy(id string) (*campaign.Campaign, error) {
 	var campaign campaign.Campaign
-	tx := c.Db.Preload("Contacts").First(&campaign, "id=?", id)
+	tx := c.Db.Preload("Contacts").First(&campaign, "id = ?", id)
 	return &campaign, tx.Error
 }
 
 func (c *CampaignRepository) Delete(campaign *campaign.Campaign) error {
+
 	tx := c.Db.Select("Contacts").Delete(campaign)
 	return tx.Error
 }

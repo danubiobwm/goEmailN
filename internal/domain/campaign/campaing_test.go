@@ -12,8 +12,8 @@ var (
 	name      = "Campaign X"
 	content   = "Body Hi!"
 	contacts  = []string{"email1@e.com", "email2@e.com"}
-	fake      = faker.New()
 	createdBy = "teste@teste.com.br"
+	fake      = faker.New()
 )
 
 func Test_NewCampaign_CreateCampaign(t *testing.T) {
@@ -104,5 +104,6 @@ func Test_NewCampaign_MustValidateCreatedBy(t *testing.T) {
 	assert := assert.New(t)
 
 	_, err := NewCampaign(name, content, contacts, "")
+
 	assert.Equal("createdby is invalid", err.Error())
 }

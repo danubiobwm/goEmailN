@@ -6,11 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var (
-	ErrInternal  = errors.New("internal server error")
-	ErrNotFound  = errors.New("resource not found")
-	ErrInvalidID = errors.New("invalid ID provided")
-)
+var ErrInternal error = errors.New("Internal Server Error")
 
 func ProcessErrorToReturn(err error) error {
 	if !errors.Is(err, gorm.ErrRecordNotFound) {

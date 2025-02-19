@@ -6,9 +6,9 @@ import (
 	"github.com/go-chi/chi"
 )
 
+// GET /campaigns/{id}
 func (h *Handler) CampaignGetById(w http.ResponseWriter, r *http.Request) (interface{}, int, error) {
 	id := chi.URLParam(r, "id")
-
 	campaign, err := h.CampaignService.GetBy(id)
 	if err == nil && campaign == nil {
 		return nil, http.StatusNotFound, err
