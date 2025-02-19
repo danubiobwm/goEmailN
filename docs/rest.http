@@ -16,8 +16,8 @@ GET {{url}}/campaigns/cu611mrsc486e1036ar0
 Authorization: Bearer {{access_token}}
 ################################
 
-# PATCH  {{url}}/campaigns/cancel/cu5dlnjsc485g97kd2gg
-
+PATCH  {{url}}/campaigns/start/cur6re24r1rmv3d2ioq0
+Authorization: Bearer {{access_token}}
 ################################
 
 DELETE   {{url}}/campaigns/delete/cu7cl7jsc485ip0tcr90
