@@ -12,11 +12,11 @@ Authorization: Bearer {{access_token}}
 }
 
 ################################
-GET {{url}}/campaigns/cu611mrsc486e1036ar0
+GET {{url}}/campaigns/cusghb24r1ruj601ce8g
 Authorization: Bearer {{access_token}}
 ################################
 
-PATCH  {{url}}/campaigns/start/cusggki4r1rumuggk29g
+PATCH  {{url}}/campaigns/start/cusghb24r1ruj601ce8g
 Authorization: Bearer {{access_token}}
 ################################
 
