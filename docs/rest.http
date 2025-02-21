@@ -7,8 +7,8 @@ Authorization: Bearer {{access_token}}
 
 {
   "Name": "campaign6",
-	"Content": "Campaig64 test",
-	"emails": ["campaign6@test.com", "campaign2@test.com", "campaign3@test.com"]
+	"Content": "Campaig test 21",
+	"emails": ["campaign6@test.com", "campaign2@test.com", "campaign3@test.com", "testgomail3@gmail.com"]
 }
 
 ################################
@@ -16,7 +16,7 @@ GET {{url}}/campaigns/cu611mrsc486e1036ar0
 Authorization: Bearer {{access_token}}
 ################################
 
-PATCH  {{url}}/campaigns/start/cur6re24r1rmv3d2ioq0
+PATCH  {{url}}/campaigns/start/cusggki4r1rumuggk29g
 Authorization: Bearer {{access_token}}
 ################################
 
