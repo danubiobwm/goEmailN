@@ -1,22 +1,27 @@
 @url = http://localhost:3000
 @provider = http://localhost:8080
 
+
 ################################
+# @name campaign_create
 POST {{url}}/campaigns
 Authorization: Bearer {{access_token}}
 
 {
-  "Name": "campaign6",
-	"Content": "Campaig test 21",
+  "Name": "Test email",
+	"Content": "Campaign content",
 	"emails": ["campaign6@test.com", "campaign2@test.com", "campaign3@test.com", "testgomail3@gmail.com"]
 }
 
-################################
-GET {{url}}/campaigns/cusghb24r1ruj601ce8g
+###
+@campaign_id = {{campaign_create.response.body.id}}
+###
+############################
+GET {{url}}/campaigns/{{campaign_id}}
 Authorization: Bearer {{access_token}}
 ################################
 
-PATCH  {{url}}/campaigns/start/cusghb24r1ruj601ce8g
+PATCH  {{url}}/campaigns/start/{{campaign_id}}
 Authorization: Bearer {{access_token}}
 ################################
 
