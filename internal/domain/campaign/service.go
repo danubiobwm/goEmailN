@@ -22,7 +22,6 @@ type ServiceImp struct {
 
 func (s *ServiceImp) Create(newCampaign contract.NewCampaign) (string, error) {
 
-	//TODO: fix the arg createdBy
 	campaign, err := NewCampaign(newCampaign.Name, newCampaign.Content, newCampaign.Emails, newCampaign.CreatedBy)
 	if err != nil {
 		return "", err
@@ -70,6 +69,16 @@ func (s *ServiceImp) Delete(id string) error {
 	return nil
 }
 
+func (s *ServiceImp) SendEmailAndUpdateStatus(campaignSaved *Campaign) {
+	err := s.SendMail(campaignSaved)
+	if err != nil {
+		campaignSaved.Fail()
+	} else {
+		campaignSaved.Done()
+	}
+	s.Repository.Update(campaignSaved)
+}
+
 func (s *ServiceImp) Start(id string) error {
 
 	campaignSaved, err := s.getAndValidateStatusIsPending(id)
@@ -78,17 +87,7 @@ func (s *ServiceImp) Start(id string) error {
 		return err
 	}
 
-	go func() {
-		err = s.SendMail(campaignSaved)
-		if err != nil {
-			campaignSaved.Fail()
-		} else {
-			campaignSaved.Done()
-		}
-
-	}()
-
-	campaignSaved.Done()
+	campaignSaved.Started()
 	err = s.Repository.Update(campaignSaved)
 	if err != nil {
 		return internalerrors.ErrInternal
